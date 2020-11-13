@@ -46,11 +46,13 @@ COMPONENTS
 =========*/
 
 .profile-card {
+    min-width: 300px;
+    margin: 50px;
+
     background-color: #fff;
     border-radius: 15px;
     overflow: hidden;
-    min-width: 300px;
-    margin: 50px;
+    box-shadow: 0px 15px 20px 5px rgba(0,0,0, 0.1);
 
     display: grid;
     grid-template-columns: 350px;
