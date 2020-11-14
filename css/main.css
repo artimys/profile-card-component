@@ -37,7 +37,6 @@ body {
 COMPONENTS
 =========*/
 .profile-card {
-  min-width: 300px;
   margin: 1.7em;
   background-color: #fff;
   border-radius: 15px;
@@ -121,12 +120,12 @@ COMPONENTS
   color: #969696;
 }
 
-.profile-card__something strong, .profile-card__something small {
+.profile-card__stats strong, .profile-card__stats small {
   display: block;
   text-align: center;
 }
 
-.profile-card__something small {
+.profile-card__stats small {
   margin-top: 5px;
   font-size: 0.6rem;
   letter-spacing: 0.1rem;

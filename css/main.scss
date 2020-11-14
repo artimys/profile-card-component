@@ -40,15 +40,12 @@ body {
     justify-content: center;
 }
 
-
 /*==========
 COMPONENTS
 =========*/
 
 .profile-card {
-    min-width: 300px;
     margin: 1.7em;
-
     background-color: #fff;
     border-radius: 15px;
     overflow: hidden;
@@ -111,7 +108,7 @@ COMPONENTS
         font-size: 0.85rem;
         color: $dark-gray;
     }
-    &__something {
+    &__stats {
         strong, small {
             display: block;
             text-align: center;
@@ -131,7 +128,6 @@ DESKTOP
 =========*/
 
 @media only screen and (min-width: 1050px) {
-
     body {
         background-position: top -500px left -230px, bottom -580px right -180px;
         // background-size: 65%;
