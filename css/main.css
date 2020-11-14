@@ -10,10 +10,10 @@ DEFAULTS
 }
 
 body {
-  background-image: url(../images/bg-pattern-top.svg), url(paper.gif);
-  background-position: -250px -250px, left top;
-  background-size: 120%, 100px;
-  background-repeat: no-repeat, repeat;
+  background-image: url(../images/bg-pattern-top.svg), url(../images/bg-pattern-bottom.svg);
+  background-position: -250px -250px, bottom -230px right -310px;
+  background-size: 500px, 500px;
+  background-repeat: no-repeat;
   background-color: #19a2ae;
   font-family: "Kumbh Sans", sans-serif;
   font-size: 18px;
@@ -38,7 +38,7 @@ COMPONENTS
 =========*/
 .profile-card {
   min-width: 300px;
-  margin: 50px;
+  margin: 1.7em;
   background-color: #fff;
   border-radius: 15px;
   overflow: hidden;
@@ -46,8 +46,8 @@ COMPONENTS
           box-shadow: 0px 15px 20px 5px rgba(0, 0, 0, 0.1);
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 350px;
-      grid-template-columns: 350px;
+  -ms-grid-columns: minmax(auto, 350px);
+      grid-template-columns: minmax(auto, 350px);
   -ms-grid-rows: 140px 147px 89px;
       grid-template-rows: 140px 147px 89px;
 }
@@ -136,4 +136,10 @@ COMPONENTS
 /*==========
 DESKTOP
 =========*/
+@media only screen and (min-width: 1050px) {
+  body {
+    background-position: top -500px left -230px, bottom -580px right -180px;
+    background-size: 58rem, 57rem;
+  }
+}
 /*# sourceMappingURL=main.css.map */
