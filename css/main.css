@@ -1,4 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+:root {
+  --ff-kumbh: 'Kumbh Sans';
+  --font-light: 400;
+  --font-bold: 700;
+  --dark-cyan: hsl(185, 75%, 39%);
+  --very-dark-desaturated-blue: hsl(229, 23%, 23%);
+  --dark-grayish-blue: hsl(227, 10%, 46%);
+  --dark-gray: hsl(0, 0%, 59%);
+  --dark-gray-opacity: hsla(0, 0%, 59%, 0.25);
+  --footer-inner-side-spacing: 25px;
+  --hero-size: 105px;
+  --top-bg-top-position: -250px;
+  --top-bg-left-position: -250px;
+  --bot-bg-bottom-position: -230px;
+  --bot-bg-right-position: -310px;
+  --top-bg-size: 500px;
+  --bot-bg-size: 500px;
+}
+
 /*==========
 DEFAULTS
 =========*/
@@ -10,14 +29,14 @@ DEFAULTS
 }
 
 body {
-  background-image: url(../images/bg-pattern-top.svg), url(../images/bg-pattern-bottom.svg);
-  background-position: -250px -250px, bottom -230px right -310px;
-  background-size: 500px, 500px;
-  background-repeat: no-repeat;
-  background-color: #19a2ae;
-  font-family: "Kumbh Sans", sans-serif;
+  background-color: var(--dark-cyan);
+  font-family: var(--ff-kumbh), sans-serif;
   font-size: 18px;
   min-height: 100vh;
+  background-image: url(../images/bg-pattern-top.svg), url(../images/bg-pattern-bottom.svg);
+  background-repeat: no-repeat;
+  background-position: top var(--top-bg-top-position) left var(--top-bg-left-position), bottom var(--bot-bg-bottom-position) right var(--bot-bg-right-position);
+  background-size: var(--top-bg-size), var(--bot-bg-size);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,9 +53,36 @@ body {
 }
 
 /*==========
-COMPONENTS
+COMPONENT
 =========*/
+@-webkit-keyframes fade-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-75px);
+            transform: translateY(-75px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-75px);
+            transform: translateY(-75px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
 .profile-card {
+  -webkit-animation: fade-down 1000ms;
+          animation: fade-down 1000ms;
   margin: 1.7em;
   background-color: #fff;
   border-radius: 15px;
@@ -57,7 +103,7 @@ COMPONENTS
 }
 
 .profile-card__content {
-  border-bottom: 1px solid rgba(150, 150, 150, 0.25);
+  border-bottom: 1px solid var(--dark-gray-opacity);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,17 +128,17 @@ COMPONENTS
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: var(--footer-inner-side-spacing);
+  padding-right: var(--footer-inner-side-spacing);
 }
 
 .profile-card__hero {
   position: absolute;
-  width: 105px;
-  height: 105px;
-  margin-left: -52.5px;
+  width: var(--hero-size);
+  height: var(--hero-size);
+  margin-left: calc(var(--hero-size) / -2);
   left: 50%;
-  bottom: -52.5px;
+  bottom: calc(var(--hero-size) / -2);
 }
 
 .profile-card__hero img {
@@ -102,22 +148,22 @@ COMPONENTS
 }
 
 .profile-card__hero-name {
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: var(--ff-kumbh), sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: #2d3248;
+  color: var(--very-dark-desaturated-blue);
   margin: 47px auto 12px;
 }
 
 .profile-card__hero-name span {
   margin-left: 5px;
-  font-weight: 400;
-  color: #969696;
+  font-weight: var(--font-light);
+  color: var(--dark-gray);
 }
 
 .profile-card__hero-location {
   font-size: 0.85rem;
-  color: #969696;
+  color: var(--dark-gray);
 }
 
 .profile-card__stats strong, .profile-card__stats small {
@@ -129,7 +175,7 @@ COMPONENTS
   margin-top: 5px;
   font-size: 0.6rem;
   letter-spacing: 0.1rem;
-  color: #969696;
+  color: var(--dark-gray);
 }
 
 /*==========
@@ -137,8 +183,36 @@ DESKTOP
 =========*/
 @media only screen and (min-width: 1050px) {
   body {
-    background-position: top -500px left -230px, bottom -580px right -180px;
-    background-size: 58rem, 57rem;
+    --top-bg-top-position: -500px;
+    --top-bg-left-position: -230px;
+    --bot-bg-bottom-position: -580px;
+    --bot-bg-right-position: -180px;
+    --top-bg-size: 910px;
+    --bot-bg-size: 925px;
+    -webkit-animation: float-bg 4s infinite;
+            animation: float-bg 4s infinite;
+  }
+  @-webkit-keyframes float-bg {
+    0% {
+      background-position: top var(--top-bg-top-position) left var(--top-bg-left-position), bottom var(--bot-bg-bottom-position) right var(--bot-bg-right-position);
+    }
+    50% {
+      background-position: top calc(var(--top-bg-top-position) - 20px) left var(--top-bg-left-position), bottom calc(var(--bot-bg-bottom-position) - 10px) right var(--bot-bg-right-position);
+    }
+    100% {
+      background-position: top var(--top-bg-top-position) left var(--top-bg-left-position), bottom var(--bot-bg-bottom-position) right var(--bot-bg-right-position);
+    }
+  }
+  @keyframes float-bg {
+    0% {
+      background-position: top var(--top-bg-top-position) left var(--top-bg-left-position), bottom var(--bot-bg-bottom-position) right var(--bot-bg-right-position);
+    }
+    50% {
+      background-position: top calc(var(--top-bg-top-position) - 20px) left var(--top-bg-left-position), bottom calc(var(--bot-bg-bottom-position) - 10px) right var(--bot-bg-right-position);
+    }
+    100% {
+      background-position: top var(--top-bg-top-position) left var(--top-bg-left-position), bottom var(--bot-bg-bottom-position) right var(--bot-bg-right-position);
+    }
   }
 }
 /*# sourceMappingURL=main.css.map */

@@ -1,17 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
 
-$ff-kumbh: 'Kumbh Sans';
-$font-light: 400;
-$font-bold: 700;
+:root {
+    --ff-kumbh: 'Kumbh Sans';
+    --font-light: 400;
+    --font-bold: 700;
 
-// Primary
-$dark-cyan: hsl(185, 75%, 39%);
-$very-dark-desaturated-blue: hsl(229, 23%, 23%);
-$dark-grayish-blue: hsl(227, 10%, 46%);
+    // Primary
+    --dark-cyan: hsl(185, 75%, 39%);
+    --very-dark-desaturated-blue: hsl(229, 23%, 23%);
+    --dark-grayish-blue: hsl(227, 10%, 46%);
 
-// Neutral
-$dark-gray: hsl(0, 0%, 59%);
-$dark-gray-opacity: hsla(0, 0%, 59%, 0.25);
+    // Neutral
+    --dark-gray: hsl(0, 0%, 59%);
+    --dark-gray-opacity: hsla(0, 0%, 59%, 0.25);
+
+    // Misc
+    --footer-inner-side-spacing: 25px;
+    --hero-size: 105px;
+
+    // Background image size and positions
+    --top-bg-top-position: -250px;
+    --top-bg-left-position: -250px;
+    --bot-bg-bottom-position: -230px;
+    --bot-bg-right-position: -310px;
+    --top-bg-size: 500px;
+    --bot-bg-size: 500px;
+}
 
 /*==========
 DEFAULTS
@@ -24,16 +38,21 @@ DEFAULTS
 }
 
 body {
-    background-image: url(../images/bg-pattern-top.svg), url(../images/bg-pattern-bottom.svg);
-    background-position: -250px -250px, bottom -230px right -310px;
-    background-size: 500px, 500px;
-    background-repeat: no-repeat;
-
-    background-color: $dark-cyan;
-    font-family: $ff-kumbh, sans-serif;
+    background-color: var(--dark-cyan);
+    font-family: var(--ff-kumbh), sans-serif;
     font-size: 18px;
     min-height: 100vh;
 
+    // Tricky background bastards
+    background-image: url(../images/bg-pattern-top.svg),
+                      url(../images/bg-pattern-bottom.svg);
+    background-repeat: no-repeat;
+    background-position: top var(--top-bg-top-position) left var(--top-bg-left-position),
+                         bottom var(--bot-bg-bottom-position) right var(--bot-bg-right-position);
+    background-size: var(--top-bg-size), var(--bot-bg-size);
+
+
+    // Center profile card
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,10 +60,22 @@ body {
 }
 
 /*==========
-COMPONENTS
+COMPONENT
 =========*/
 
+@keyframes fade-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-75px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .profile-card {
+    animation: fade-down 1000ms;
     margin: 1.7em;
     background-color: #fff;
     border-radius: 15px;
@@ -60,7 +91,7 @@ COMPONENTS
         background: url(../images/bg-pattern-card.svg) no-repeat;
     }
     &__content{
-        border-bottom: 1px solid $dark-gray-opacity;
+        border-bottom: 1px solid var(--dark-gray-opacity);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -70,21 +101,17 @@ COMPONENTS
         display: flex;
         align-items: center;
         justify-content: space-around;
-
-        $footer-inner-side-spacing: 25px;
-        padding-left: $footer-inner-side-spacing;
-        padding-right: $footer-inner-side-spacing;
+        padding-left: var(--footer-inner-side-spacing);
+        padding-right: var(--footer-inner-side-spacing);
     }
     &__hero {
-        $hero-size: 105px;
-
         position: absolute;
-        width: $hero-size;
-        height: $hero-size;
+        width: var(--hero-size);
+        height: var(--hero-size);
 
-        margin-left: -($hero-size / 2);
+        margin-left: calc(var(--hero-size) / -2);
         left: 50%;
-        bottom: -($hero-size / 2);
+        bottom: calc(var(--hero-size) / -2);
 
         img {
             border: 5px solid #fff;
@@ -93,20 +120,20 @@ COMPONENTS
         }
     }
     &__hero-name {
-        font-family: $ff-kumbh, sans-serif;
+        font-family: var(--ff-kumbh), sans-serif;
         font-weight: 700;
         font-size: 1.1rem;
-        color: $very-dark-desaturated-blue;
+        color: var(--very-dark-desaturated-blue);
         margin: 47px auto 12px;
         span {
             margin-left: 5px;
-            font-weight: $font-light;
-            color: $dark-gray;
+            font-weight: var(--font-light);
+            color: var(--dark-gray);
         }
     }
     &__hero-location{
         font-size: 0.85rem;
-        color: $dark-gray;
+        color: var(--dark-gray);
     }
     &__stats {
         strong, small {
@@ -117,7 +144,7 @@ COMPONENTS
             margin-top: 5px;
             font-size: 0.6rem;
             letter-spacing: 0.1rem;
-            color: $dark-gray;
+            color: var(--dark-gray);
         }
     }
 }
@@ -128,9 +155,31 @@ DESKTOP
 =========*/
 
 @media only screen and (min-width: 1050px) {
+
     body {
-        background-position: top -500px left -230px, bottom -580px right -180px;
-        // background-size: 65%;
-        background-size: 58rem, 57rem;
+        --top-bg-top-position: -500px; // 480
+        --top-bg-left-position: -230px;
+        --bot-bg-bottom-position: -580px; // 570
+        --bot-bg-right-position: -180px;
+        --top-bg-size: 910px;
+        --bot-bg-size: 925px;
+
+        animation: float-bg 4s infinite;
     }
+
+    @keyframes float-bg{
+        0% {
+            background-position: top var(--top-bg-top-position) left var(--top-bg-left-position),
+                                 bottom var(--bot-bg-bottom-position) right var(--bot-bg-right-position);
+        }
+        50% {
+            background-position: top calc(var(--top-bg-top-position) - 20px) left var(--top-bg-left-position),
+                                 bottom calc(var(--bot-bg-bottom-position) - 10px) right var(--bot-bg-right-position);
+        }
+        100% {
+            background-position: top var(--top-bg-top-position) left var(--top-bg-left-position),
+                                 bottom var(--bot-bg-bottom-position) right var(--bot-bg-right-position);
+        }
+    }
+
 }
