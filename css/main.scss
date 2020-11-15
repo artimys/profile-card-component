@@ -51,7 +51,6 @@ body {
                          bottom var(--bot-bg-bottom-position) right var(--bot-bg-right-position);
     background-size: var(--top-bg-size), var(--bot-bg-size);
 
-
     // Center profile card
     display: flex;
     flex-direction: column;
@@ -68,14 +67,17 @@ COMPONENT
         opacity: 0;
         transform: translateY(-75px);
     }
-    100% {
+    50% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(0.9);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
 .profile-card {
-    animation: fade-down 1000ms;
+    animation: fade-down 1500ms;
     margin: 1.7em;
     background-color: #fff;
     border-radius: 15px;
@@ -164,7 +166,7 @@ DESKTOP
         --top-bg-size: 910px;
         --bot-bg-size: 925px;
 
-        animation: float-bg 4s infinite;
+        animation: float-bg 4s infinite ease-in-out;
     }
 
     @keyframes float-bg{

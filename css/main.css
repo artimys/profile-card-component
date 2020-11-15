@@ -61,10 +61,14 @@ COMPONENT
     -webkit-transform: translateY(-75px);
             transform: translateY(-75px);
   }
-  100% {
+  50% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    -webkit-transform: translateY(0) scale(0.9);
+            transform: translateY(0) scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 @keyframes fade-down {
@@ -73,16 +77,20 @@ COMPONENT
     -webkit-transform: translateY(-75px);
             transform: translateY(-75px);
   }
-  100% {
+  50% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    -webkit-transform: translateY(0) scale(0.9);
+            transform: translateY(0) scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
 .profile-card {
-  -webkit-animation: fade-down 1000ms;
-          animation: fade-down 1000ms;
+  -webkit-animation: fade-down 1500ms;
+          animation: fade-down 1500ms;
   margin: 1.7em;
   background-color: #fff;
   border-radius: 15px;
@@ -189,8 +197,8 @@ DESKTOP
     --bot-bg-right-position: -180px;
     --top-bg-size: 910px;
     --bot-bg-size: 925px;
-    -webkit-animation: float-bg 4s infinite;
-            animation: float-bg 4s infinite;
+    -webkit-animation: float-bg 4s infinite ease-in-out;
+            animation: float-bg 4s infinite ease-in-out;
   }
   @-webkit-keyframes float-bg {
     0% {
