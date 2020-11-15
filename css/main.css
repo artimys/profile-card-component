@@ -108,6 +108,15 @@ COMPONENT
 .profile-card__header {
   position: relative;
   background: url(../images/bg-pattern-card.svg) no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .profile-card__content {
@@ -141,12 +150,9 @@ COMPONENT
 }
 
 .profile-card__hero {
-  position: absolute;
   width: var(--hero-size);
   height: var(--hero-size);
-  margin-left: calc(var(--hero-size) / -2);
-  left: 50%;
-  bottom: calc(var(--hero-size) / -2);
+  margin-top: 140px;
 }
 
 .profile-card__hero img {

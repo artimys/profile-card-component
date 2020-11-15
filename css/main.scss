@@ -91,6 +91,11 @@ COMPONENT
     &__header {
         position: relative;
         background: url(../images/bg-pattern-card.svg) no-repeat;
+
+        // Center hero image
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     &__content{
         border-bottom: 1px solid var(--dark-gray-opacity);
@@ -107,13 +112,12 @@ COMPONENT
         padding-right: var(--footer-inner-side-spacing);
     }
     &__hero {
-        position: absolute;
         width: var(--hero-size);
         height: var(--hero-size);
 
-        margin-left: calc(var(--hero-size) / -2);
-        left: 50%;
-        bottom: calc(var(--hero-size) / -2);
+        // Helps align to bottom edge of container.
+        // Height of thet .profile-card__header row
+        margin-top: 140px;
 
         img {
             border: 5px solid #fff;
